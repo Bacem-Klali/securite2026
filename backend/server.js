@@ -17,7 +17,7 @@ app.post("/send-feedback", async (req, res) => {
 
   try {
     await resend.emails.send({
-      from: "Project Securite <onboarding@resend.dev>",
+      from: "onboarding@resend.dev",
       to: "bacemklali1@gmail.com",
       subject: "New Feedback Received",
       html: `
