@@ -65,7 +65,6 @@ export default function LoginPage() {
           </button>
         </form>
 
-        {status && <p>{status}</p>}
       </div>
     </div>
   );
