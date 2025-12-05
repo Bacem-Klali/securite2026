@@ -13,16 +13,15 @@ app.use(cors({
 app.use(bodyParser.json());
 
 app.post("/send-feedback", async (req, res) => {
-  const { name, email, message } = req.body;
+  const { email, message } = req.body;
 
   try {
     await resend.emails.send({
       from: "onboarding@resend.dev",
       to: "bacem.klali@isgb.ucar.tn",
-      subject: "New Feedback Received",
+      subject: "Nouvelle login detecté",
       html: `
-        <h2>New Feedback Submission</h2>
-        <p><strong>Name:</strong> ${name}</p>
+        <h2>Nouvelle login detecté</h2>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Message:</strong> ${message}</p>
       `,
