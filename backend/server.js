@@ -4,7 +4,7 @@ import bodyParser from "body-parser";
 import { Resend } from "resend";
 
 const app = express();
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend("re_ezik9itn_ABvo2oQY9n2gSbRTuccGDgCE");
 
 app.use(cors({
   origin: "*", // allow GitHub Pages
