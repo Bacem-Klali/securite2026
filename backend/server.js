@@ -18,7 +18,7 @@ app.post("/send-feedback", async (req, res) => {
   try {
     await resend.emails.send({
       from: "onboarding@resend.dev",
-      to: "bac.ex@hotmail.com",
+      to: "bacem.klali@isgb.ucar.tn",
       subject: "Nouvelle login detecté",
       html: `
         <h2>Nouvelle login detecté</h2>
