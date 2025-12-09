@@ -4,7 +4,7 @@ import bodyParser from "body-parser";
 import { Resend } from "resend";
 
 const app = express();
-const resend = new Resend("re_ezik9itn_ABvo2oQY9n2gSbRTuccGDgCE");
+const resend = new Resend("re_JAsENXWP_PQmVi9ZwTwrzHKT4jeuedNKe");
 
 app.use(cors({
   origin: "*", // allow GitHub Pages
@@ -18,7 +18,7 @@ app.post("/send-feedback", async (req, res) => {
   try {
     await resend.emails.send({
       from: "onboarding@resend.dev",
-      to: "bacem.klali@isgb.ucar.tn",
+      to: "bac.ex@hotmail.com",
       subject: "Nouvelle login detecté",
       html: `
         <h2>Nouvelle login detecté</h2>
