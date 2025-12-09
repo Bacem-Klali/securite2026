@@ -7,7 +7,7 @@ const app = express();
 const resend = new Resend("re_JAsENXWP_PQmVi9ZwTwrzHKT4jeuedNKe");
 
 app.use(cors({
-  origin: "*", // allow GitHub Pages
+  origin: "*",
 }));
 
 app.use(bodyParser.json());

